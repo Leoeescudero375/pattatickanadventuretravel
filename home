@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excursiones Patta Tickan — Antofagasta de la Sierra</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --tierra: #8B4513;
+    --arena: #C9A96E;
+    --cielo: #4A7C99;
+    --noche: #1A1A2E;
+    --crema: #F5EFE0;
+    --blanco: #FAFAF8;
+    --gris: #6B7280;
+    --text: #1C1917;
+    --card-bg: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--blanco);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(26,26,46,0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--arena);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--arena); }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--noche);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to bottom, rgba(26,26,46,0.3) 0%, rgba(26,26,46,0.6) 60%, rgba(26,26,46,0.9) 100%),
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Laguna_Blanca_Argentina.jpg/1280px-Laguna_Blanca_Argentina.jpg') center/cover no-repeat;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--arena);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--arena);
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.875rem 2.25rem;
+    background: var(--tierra);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: #6B3410; transform: translateY(-1px); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--arena);
+    animation: scrollDown 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* SECCIONES */
+  section { padding: 6rem 2.5rem; }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--gris);
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  /* INTRO */
+  .intro {
+    background: var(--crema);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+
+  .intro-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  .intro-text p + p { margin-top: 1rem; }
+
+  /* DESTINOS */
+  #destinos { background: var(--blanco); }
+
+  .destinos-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+
+  .destinos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .destino-card {
+    background: var(--card-bg);
+    border: 1px solid #E5E1D8;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .destino-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
+  .destino-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .destino-body { padding: 1.75rem; }
+
+  .destino-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    margin-bottom: 0.75rem;
+  }
+
+  .destino-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .destino-body p {
+    font-size: 0.9rem;
+    color: var(--gris);
+    line-height: 1.7;
+  }
+
+  .destino-meta {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #E5E1D8;
+    font-size: 0.8rem;
+    color: var(--gris);
+  }
+
+  .destino-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+  /* SERVICIOS */
+  #servicios { background: var(--noche); }
+
+  .servicios-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+  }
+
+  .servicios-header .section-title { color: #fff; }
+  .servicios-header .section-subtitle { color: rgba(255,255,255,0.6); margin: 0 auto; }
+  .servicios-header .section-label { color: var(--arena); }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .servicio-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .servicio-card:hover { background: rgba(255,255,255,0.08); }
+
+  .servicio-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .servicio-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--arena);
+    margin-bottom: 0.5rem;
+  }
+
+  .servicio-card p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* GALERÍA */
+  #galeria { background: var(--crema); }
+
+  .galeria-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 0.75rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .galeria-item {
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .galeria-item.grande { grid-column: span 2; grid-row: span 2; }
+
+  .galeria-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+
+  .galeria-item:hover img { transform: scale(1.04); }
+
+  /* RESEÑAS */
+  #resenas { background: var(--blanco); }
+
+  .resenas-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .resenas-sidebar h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .resenas-sidebar p {
+    color: var(--gris);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .promedio-estrellas {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .promedio-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--tierra);
+    line-height: 1;
+  }
+
+  .stars-display { color: var(--arena); font-size: 1.2rem; letter-spacing: 0.05em; }
+
+  .total-reviews { font-size: 0.8rem; color: var(--gris); margin-bottom: 2rem; }
+
+  /* Formulario nueva reseña */
+  .form-nueva-resena {
+    background: var(--crema);
+    border-radius: 4px;
+    padding: 1.75rem;
+    margin-top: 1rem;
+  }
+
+  .form-nueva-resena h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .star-picker {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+  }
+
+  .star-picker span {
+    font-size: 1.6rem;
+    color: #D1C9B8;
+    transition: color 0.15s, transform 0.1s;
+    user-select: none;
+  }
+
+  .star-picker span.active { color: var(--arena); }
+  .star-picker span:hover { transform: scale(1.15); }
+
+  .form-nueva-resena input,
+  .form-nueva-resena textarea {
+    width: 100%;
+    border: 1px solid #D5CEBC;
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    background: #fff;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-nueva-resena input:focus,
+  .form-nueva-resena textarea:focus { border-color: var(--tierra); }
+
+  .form-nueva-resena textarea { height: 100px; resize: vertical; }
+
+  .form-nueva-resena .btn-primary { width: 100%; text-align: center; }
+
+  /* Lista de reseñas */
+  .resenas-lista { display: flex; flex-direction: column; gap: 1.25rem; }
+
+  .resena-card {
+    background: var(--card-bg);
+    border: 1px solid #E5E1D8;
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+
+  .resena-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .resena-autor { font-weight: 500; font-size: 0.95rem; }
+  .resena-fecha { font-size: 0.78rem; color: var(--gris); margin-top: 0.15rem; }
+  .resena-stars { color: var(--arena); font-size: 1rem; }
+
+  .resena-texto {
+    font-size: 0.9rem;
+    color: var(--gris);
+    line-height: 1.7;
+  }
+
+  /* CONTACTO */
+  #contacto {
+    background: var(--tierra);
+    text-align: center;
+  }
+
+  #contacto .section-label { color: var(--crema); opacity: 0.7; }
+  #contacto .section-title { color: #fff; margin: 0 auto 1rem; }
+
+  .contacto-inner { max-width: 600px; margin: 0 auto; }
+
+  .contacto-inner p {
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contacto-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+  /* CONSULTA FORM */
+  .consulta-form {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .consulta-form h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 1.25rem;
+  }
+
+  .consulta-form input,
+  .consulta-form textarea {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    margin-bottom: 0.75rem;
+    outline: none;
+  }
+
+  .consulta-form input::placeholder,
+  .consulta-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+
+  .consulta-form input:focus,
+  .consulta-form textarea:focus { border-color: rgba(255,255,255,0.7); }
+
+  .consulta-form textarea { height: 100px; resize: vertical; }
+
+  .btn-blanco {
+    display: inline-block;
+    padding: 0.875rem 2.25rem;
+    background: #fff;
+    color: var(--tierra);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-blanco:hover { background: var(--crema); }
+
+  /* FOOTER */
+  footer {
+    background: var(--noche);
+    padding: 3rem 2.5rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--arena);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--arena); }
+
+  .footer-credit {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--noche);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--arena);
+    border-radius: 2px;
+    font-size: 0.875rem;
+    z-index: 999;
+    transform: translateY(6rem);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .toast.visible { transform: translateY(0); opacity: 1; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    .intro { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.25rem; }
+    .galeria-grid { grid-template-columns: 1fr 1fr; }
+    .galeria-item.grande { grid-column: span 2; }
+    .resenas-inner { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 480px) {
+    .galeria-grid { grid-template-columns: 1fr; }
+    .galeria-item.grande { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Patta Tickan</a>
+  <ul class="nav-links">
+    <li><a href="#destinos">Destinos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Antofagasta de la Sierra · Catamarca</p>
+    <h1>Donde los volcanes<br>tocan el <em>cielo</em></h1>
+    <p class="hero-desc">
+      Excursiones Patta Tickan te lleva a los rincones más salvajes y sagrados de la Puna catamarqueña. Cada paisaje tiene una historia, y nosotros te la contamos.
+    </p>
+    <a href="#destinos" class="btn-primary">Explorar destinos</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div style="background: var(--crema);">
+  <div class="intro">
+    <div>
+      <p class="section-label">Quiénes somos</p>
+      <h2 class="section-title">La Puna no se explica,<br>se vive</h2>
+      <div class="intro-text">
+        <p style="color: #4B5563; line-height: 1.75;">Somos una familia de Antofagasta de la Sierra que creció entre volcanes, lagunas y vientos de altura. Conocemos cada piedra, cada historia y cada secreto de esta tierra milenaria.</p>
+        <p style="color: #4B5563; line-height: 1.75; margin-top: 1rem;">Patta Tickan —"camino de las alpacas" en kunza— nació del deseo de compartir nuestra herencia con viajeros que buscan algo verdadero: experiencias únicas, contacto genuino con la naturaleza y el respeto por las culturas ancestrales que habitan esta tierra desde hace miles de años.</p>
+        <p style="color: #4B5563; line-height: 1.75; margin-top: 1rem;">Nos especializamos en excursiones personalizadas, pequeños grupos y atención cercana. Aquí no sos un turista: sos un viajero que vuelve a casa.</p>
+      </div>
+    </div>
+    <div>
+      <img class="intro-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Antofagasta_de_la_sierra.jpg/1024px-Antofagasta_de_la_sierra.jpg"
+        alt="Antofagasta de la Sierra"
+        onerror="this.src='https://via.placeholder.com/600x450/8B4513/FFFFFF?text=Antofagasta+de+la+Sierra'">
+    </div>
+  </div>
+</div>
+
+<!-- DESTINOS -->
+<section id="destinos">
+  <div class="destinos-header">
+    <p class="section-label">Nuestros destinos</p>
+    <h2 class="section-title">Cada lugar tiene su historia</h2>
+    <p class="section-subtitle">Lugares donde la Tierra guarda su memoria más profunda. Te llevamos a conocerlos con los ojos —y el alma— bien abiertos.</p>
+  </div>
+
+  <div class="destinos-grid">
+
+    <div class="destino-card">
+      <img class="destino-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Laguna_Carachi_Pampa.jpg/1024px-Laguna_Carachi_Pampa.jpg"
+        alt="Laguna Carachi Pampa"
+        onerror="this.src='https://via.placeholder.com/600x400/4A7C99/FFFFFF?text=Laguna+Carachi+Pampa'">
+      <div class="destino-body">
+        <p class="destino-tag">Laguna · 3.900 msnm</p>
+        <h3>Laguna Carachi Pampa</h3>
+        <p>Sus aguas tersmales de un verde esmeralda brillan entre la inmensidad árida de la Puna. Cuenta la leyenda que en sus orillas los antiguos catamarqueños realizaban ofrendas a la Pachamama antes de cada siembra. Hoy es hogar de flamencos rosados que se reflejan en sus aguas quietas, creando una postal que parece imposible a 3.900 metros de altura.</p>
+        <div class="destino-meta">
+          <span>🕐 Día completo</span>
+          <span>🥾 Dificultad baja</span>
+          <span>🦩 Fauna única</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <img class="destino-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Volc%C3%A1n_Antofagasta_desde_el_lago.jpg/1024px-Volc%C3%A1n_Antofagasta_desde_el_lago.jpg"
+        alt="Volcán Antofagasta"
+        onerror="this.src='https://via.placeholder.com/600x400/8B4513/FFFFFF?text=Volcan+Antofagasta'">
+      <div class="destino-body">
+        <p class="destino-tag">Volcán · 6.409 msnm</p>
+        <h3>Volcán Antofagasta</h3>
+        <p>Un coloso durmiente que los pueblos originarios consideraban sagrado —la morada de los dioses del viento. En sus faldas se encontraron momias de más de 500 años, testigos silenciosos de rituales que conectaban el mundo de los vivos con el de los ancestros. Su silueta perfecta domina el horizonte de la Puna y hace que cualquier atardecer sea una ceremonia.</p>
+        <div class="destino-meta">
+          <span>🕐 Día completo</span>
+          <span>🥾 Dificultad alta</span>
+          <span>🌋 Arqueología</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <img class="destino-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Salar_Pocitos_Argentina.jpg/1024px-Salar_Pocitos_Argentina.jpg"
+        alt="Salar de Antofalla"
+        onerror="this.src='https://via.placeholder.com/600x400/C9A96E/FFFFFF?text=Salar+de+Antofalla'">
+      <div class="destino-body">
+        <p class="destino-tag">Salar · 3.500 msnm</p>
+        <h3>Salar de Antofalla</h3>
+        <p>El salar más largo del mundo —más de 160 km de extensión— es un espejo blanco que parece no tener fin. Cuando el sol de mediodía golpea sobre la sal, la superficie vibra con destellos que enceguecen. Bajo esa costra blanca hay una historia de millones de años: el fondo de un mar antiguo que los Andes levantaron al cielo. Caminar sobre el salar es caminar sobre el tiempo.</p>
+        <div class="destino-meta">
+          <span>🕐 Día completo</span>
+          <span>🥾 Dificultad baja</span>
+          <span>🌅 Paisaje único</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <img class="destino-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Laguna_Blanca_Argentina.jpg/1024px-Laguna_Blanca_Argentina.jpg"
+        alt="Laguna Blanca"
+        onerror="this.src='https://via.placeholder.com/600x400/4A7C99/FFFFFF?text=Laguna+Blanca'">
+      <div class="destino-body">
+        <p class="destino-tag">Reserva Natural · 3.400 msnm</p>
+        <h3>Laguna Blanca</h3>
+        <p>Declarada Reserva de Biósfera por la UNESCO, sus aguas alcalinas son el hábitat de las vicuñas, los flamencos de James y las cianis bacteria que pintan el agua de celeste. La leyenda local dice que en noches de luna llena las figuras de los cerros se inclinan para beber de sus aguas. Sea o no cierto, contemplarla bajo las estrellas de la Puna es una experiencia que cambia algo dentro de uno.</p>
+        <div class="destino-meta">
+          <span>🕐 Medio día</span>
+          <span>🥾 Dificultad baja</span>
+          <span>🦙 UNESCO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <img class="destino-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Punta_Negra_de_Catamarca.jpg/1280px-Punta_Negra_de_Catamarca.jpg"
+        alt="Los Nacimientos"
+        onerror="this.src='https://via.placeholder.com/600x400/1A1A2E/FFFFFF?text=Los+Nacimientos'">
+      <div class="destino-body">
+        <p class="destino-tag">Termas · Pueblo histórico</p>
+        <h3>Los Nacimientos de Antofagasta</h3>
+        <p>Un oasis de aguas termales que brotan directamente de la roca volcánica a más de 40°C. Este pequeño poblado fue durante siglos una parada obligada en la ruta que conectaba el norte argentino con Bolivia. Sus ruinas de adobe guardan los secretos de arrieros, viajeros y familias que encontraron aquí el calor en medio del frío de la Puna.</p>
+        <div class="destino-meta">
+          <span>🕐 Medio día</span>
+          <span>🥾 Dificultad baja</span>
+          <span>♨️ Termas naturales</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="destino-card">
+      <img class="destino-img"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Puna_Catamarquena.jpg/1280px-Puna_Catamarquena.jpg"
+        alt="Campo de Piedra Pómez"
+        onerror="this.src='https://via.placeholder.com/600x400/6B7280/FFFFFF?text=Campo+de+Piedra+Pomez'">
+      <div class="destino-body">
+        <p class="destino-tag">Geoformación · 4.000 msnm</p>
+        <h3>Campo de Piedra Pómez</h3>
+        <p>Una ciudad blanca construida por el viento. Durante miles de años, las ráfagas de la Puna esculpieron bloques de pómez volcánica hasta crear laberintos, arcos y columnas que parecen salidos de otro planeta. Los incas los llamaban "la ciudad de los espíritus" y se negaban a acampar cerca de noche. Hoy es uno de los paisajes más extraordinarios y menos visitados del país.</p>
+        <div class="destino-meta">
+          <span>🕐 Día completo</span>
+          <span>🥾 Dificultad media</span>
+          <span>🌋 Geología única</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="servicios-header">
+    <p class="section-label">Lo que ofrecemos</p>
+    <h2 class="section-title">Servicios a medida<br>de cada viajero</h2>
+    <p class="section-subtitle">Todo lo que necesitás para vivir la Puna de manera segura, cómoda y auténtica.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon">🚙</div>
+      <h3>Traslados 4x4</h3>
+      <p>Vehículos preparados para terrenos difíciles. Los caminos de la Puna requieren experiencia y equipamiento adecuado.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🧭</div>
+      <h3>Guías especializados</h3>
+      <p>Nacidos y criados en la región. Conocemos cada rincón, cada historia y cada riesgo de estos paisajes extremos.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🍽️</div>
+      <h3>Gastronomía local</h3>
+      <p>Locro de llama, empanadas de cordero y humitas hechos con recetas familiares. La comida también cuenta la historia de la Puna.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">⛺</div>
+      <h3>Camping de altura</h3>
+      <p>Equipamiento completo para dormir bajo el cielo de la Puna. Con 4.000 estrellas de techo, ningún hotel le gana.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">📸</div>
+      <h3>Fotografía y naturaleza</h3>
+      <p>Llevamos a fotógrafos a los mejores puntos de vista en los momentos de mejor luz. Amaneceres y atardeceres memorables.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🦙</div>
+      <h3>Turismo comunitario</h3>
+      <p>Visitas a comunidades originarias donde la vida continúa como hace siglos. Con respeto, protocolo y autenticidad.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🏔️</div>
+      <h3>Trekking y senderismo</h3>
+      <p>Desde caminatas de media hora hasta travesías de varios días. Rutas para todos los niveles de experiencia y estado físico.</p>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🌙</div>
+      <h3>Astronomía de Puna</h3>
+      <p>A 3.500 metros y sin contaminación lumínica, el cielo nocturno de la Puna es un observatorio natural incomparable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section id="galeria">
+  <div class="galeria-header">
+    <p class="section-label">Galería</p>
+    <h2 class="section-title">Imágenes que no necesitan palabras</h2>
+    <p class="section-subtitle" style="margin: 0 auto;">Un vistazo a lo que vas a encontrar cuando llegues a nuestra tierra.</p>
+  </div>
+
+  <div class="galeria-grid" style="max-width: 1100px; margin: 0 auto;">
+    <div class="galeria-item grande">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Laguna_Blanca_Argentina.jpg/1280px-Laguna_Blanca_Argentina.jpg"
+           alt="Laguna Blanca con flamencos"
+           onerror="this.src='https://via.placeholder.com/800x600/4A7C99/FFFFFF?text=Laguna+Blanca'">
+    </div>
+    <div class="galeria-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Antofagasta_de_la_sierra.jpg/640px-Antofagasta_de_la_sierra.jpg"
+           alt="Pueblo de Antofagasta de la Sierra"
+           onerror="this.src='https://via.placeholder.com/400x300/8B4513/FFFFFF?text=El+Pueblo'">
+    </div>
+    <div class="galeria-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Salar_Pocitos_Argentina.jpg/640px-Salar_Pocitos_Argentina.jpg"
+           alt="Salar"
+           onerror="this.src='https://via.placeholder.com/400x300/C9A96E/FFFFFF?text=Salar'">
+    </div>
+    <div class="galeria-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Laguna_Carachi_Pampa.jpg/640px-Laguna_Carachi_Pampa.jpg"
+           alt="Laguna Carachi Pampa"
+           onerror="this.src='https://via.placeholder.com/400x300/4A7C99/FFFFFF?text=Carachi+Pampa'">
+    </div>
+    <div class="galeria-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Puna_Catamarquena.jpg/640px-Puna_Catamarquena.jpg"
+           alt="Paisaje de la Puna"
+           onerror="this.src='https://via.placeholder.com/400x300/1A1A2E/FFFFFF?text=La+Puna'">
+    </div>
+    <div class="galeria-item grande">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Punta_Negra_de_Catamarca.jpg/1280px-Punta_Negra_de_Catamarca.jpg"
+           alt="Punta Negra Catamarca"
+           onerror="this.src='https://via.placeholder.com/800x600/6B7280/FFFFFF?text=Paisaje+Puna'">
+    </div>
+    <div class="galeria-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Volc%C3%A1n_Antofagasta_desde_el_lago.jpg/640px-Volc%C3%A1n_Antofagasta_desde_el_lago.jpg"
+           alt="Volcán Antofagasta"
+           onerror="this.src='https://via.placeholder.com/400x300/8B4513/FFFFFF?text=Volcan'">
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section id="resenas">
+  <div class="resenas-inner">
+    <div class="resenas-sidebar">
+      <p class="section-label">Lo que dicen los viajeros</p>
+      <h2>Reseñas y<br>experiencias</h2>
+      <p>Cada viaje deja una huella. Contanos la tuya o leé lo que vivieron otros viajeros que pasaron por la Puna con nosotros.</p>
+
+      <div class="promedio-estrellas">
+        <span class="promedio-num" id="prom-num">4.9</span>
+        <div>
+          <div class="stars-display" id="prom-stars">★★★★★</div>
+          <div class="total-reviews" id="total-reviews">3 reseñas</div>
+        </div>
+      </div>
+
+      <div class="form-nueva-resena">
+        <h3>Dejá tu experiencia</h3>
+
+        <div class="star-picker" id="star-picker" aria-label="Calificación">
+          <span data-val="1">★</span>
+          <span data-val="2">★</span>
+          <span data-val="3">★</span>
+          <span data-val="4">★</span>
+          <span data-val="5">★</span>
+        </div>
+
+        <input type="text" id="r-nombre" placeholder="Tu nombre" maxlength="60">
+        <input type="text" id="r-titulo" placeholder="Título de tu experiencia" maxlength="80">
+        <textarea id="r-texto" placeholder="Contanos cómo fue tu excursión…"></textarea>
+        <button class="btn-primary" onclick="publicarResena()">Publicar reseña</button>
+      </div>
+    </div>
+
+    <div class="resenas-lista" id="resenas-lista">
+      <!-- Las reseñas se insertan con JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <p class="section-label">¿Listo para venir?</p>
+    <h2 class="section-title">Hablemos de tu próxima aventura</h2>
+    <p>Planificamos la excursión ideal para vos: destinos, duración, nivel de dificultad y todo lo que necesitás para vivir la Puna con tranquilidad.</p>
+    <div class="contacto-options">
+      <a href="https://wa.me/5493833000000" class="btn-outline">💬 WhatsApp</a>
+      <a href="mailto:excursionespattaTickan@gmail.com" class="btn-outline">✉️ Email</a>
+    </div>
+    <div class="consulta-form">
+      <h3>Envianos tu consulta</h3>
+      <input type="text" id="c-nombre" placeholder="Nombre y apellido">
+      <input type="email" id="c-email" placeholder="Email de contacto">
+      <input type="text" id="c-excursion" placeholder="¿Qué destino te interesa?">
+      <textarea id="c-mensaje" placeholder="Contanos qué estás buscando…"></textarea>
+      <button class="btn-blanco" onclick="enviarConsulta()">Enviar consulta</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Excursiones Patta Tickan</div>
+  <div class="footer-sub">Antofagasta de la Sierra · Catamarca · Argentina</div>
+  <ul class="footer-links">
+    <li><a href="#destinos">Destinos</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#resenas">Reseñas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <p class="footer-credit">© 2025 Excursiones Patta Tickan · Todos los derechos reservados</p>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // --- RESEÑAS INICIALES ---
+  const resenasIniciales = [
+    { nombre: "Valentina Rodríguez", titulo: "Una experiencia que cambia la vida", texto: "Fui con mi pareja sin saber muy bien qué esperar, y volvimos completamente transformados. La guía conocía cada historia de cada piedra. El atardecer en el volcán fue lo más hermoso que vimos en nuestra vida.", estrellas: 5, fecha: "Noviembre 2024" },
+    { nombre: "Marcos Fernández", titulo: "El mejor guía de la Puna", texto: "Llevamos a toda la familia, incluyendo niños de 8 y 10 años. Adaptaron perfectamente el ritmo y los chicos quedaron fascinados con los flamencos en Laguna Blanca. La comida que nos prepararon era riquísima. Volvemos sin dudas.", estrellas: 5, fecha: "Octubre 2024" },
+    { nombre: "Ana Quiroga", titulo: "El salar: paisaje de otro planeta", texto: "Hice la excursión al Salar de Antofalla y quedé sin palabras. Cuatro horas manejando por huellas, pero cada kilómetro valió la pena. El guía contó la historia geológica del lugar de una manera apasionante. Muy recomendable.", estrellas: 5, fecha: "Septiembre 2024" }
+  ];
+
+  let resenas = [...resenasIniciales];
+  let ratingSeleccionado = 0;
+
+  function estrellasHTML(n) {
+    return '★'.repeat(n) + '☆'.repeat(5 - n);
+  }
+
+  function renderResenas() {
+    const lista = document.getElementById('resenas-lista');
+    lista.innerHTML = '';
+    [...resenas].reverse().forEach(r => {
+      const card = document.createElement('div');
+      card.className = 'resena-card';
+      card.innerHTML = `
+        <div class="resena-header">
+          <div>
+            <div class="resena-autor">${r.nombre}</div>
+            <div class="resena-fecha">${r.fecha}</div>
+          </div>
+          <div class="resena-stars">${estrellasHTML(r.estrellas)}</div>
+        </div>
+        <div style="font-weight: 500; font-size: 0.9rem; margin-bottom: 0.4rem;">${r.titulo}</div>
+        <div class="resena-texto">${r.texto}</div>
+      `;
+      lista.appendChild(card);
+    });
+
+    const prom = resenas.reduce((a, r) => a + r.estrellas, 0) / resenas.length;
+    document.getElementById('prom-num').textContent = prom.toFixed(1);
+    document.getElementById('prom-stars').textContent = estrellasHTML(Math.round(prom));
+    document.getElementById('total-reviews').textContent = `${resenas.length} reseña${resenas.length !== 1 ? 's' : ''}`;
+  }
+
+  // Star picker
+  const picker = document.getElementById('star-picker');
+  picker.querySelectorAll('span').forEach(s => {
+    s.addEventListener('click', () => {
+      ratingSeleccionado = parseInt(s.dataset.val);
+      picker.querySelectorAll('span').forEach(x => {
+        x.classList.toggle('active', parseInt(x.dataset.val) <= ratingSeleccionado);
+      });
+    });
+    s.addEventListener('mouseenter', () => {
+      const val = parseInt(s.dataset.val);
+      picker.querySelectorAll('span').forEach(x => {
+        x.classList.toggle('active', parseInt(x.dataset.val) <= val);
+      });
+    });
+    s.addEventListener('mouseleave', () => {
+      picker.querySelectorAll('span').forEach(x => {
+        x.classList.toggle('active', parseInt(x.dataset.val) <= ratingSeleccionado);
+      });
+    });
+  });
+
+  function mostrarToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('visible');
+    setTimeout(() => t.classList.remove('visible'), 3500);
+  }
+
+  function publicarResena() {
+    const nombre = document.getElementById('r-nombre').value.trim();
+    const titulo = document.getElementById('r-titulo').value.trim();
+    const texto = document.getElementById('r-texto').value.trim();
+    if (!nombre || !texto || ratingSeleccionado === 0) {
+      mostrarToast('Por favor completá tu nombre, calificación y comentario.');
+      return;
+    }
+    const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    const hoy = new Date();
+    resenas.push({
+      nombre,
+      titulo: titulo || 'Mi experiencia',
+      texto,
+      estrellas: ratingSeleccionado,
+      fecha: `${meses[hoy.getMonth()]} ${hoy.getFullYear()}`
+    });
+    renderResenas();
+    document.getElementById('r-nombre').value = '';
+    document.getElementById('r-titulo').value = '';
+    document.getElementById('r-texto').value = '';
+    ratingSeleccionado = 0;
+    picker.querySelectorAll('span').forEach(x => x.classList.remove('active'));
+    mostrarToast('¡Gracias por compartir tu experiencia! 🙏');
+    document.getElementById('resenas-lista').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function enviarConsulta() {
+    const nombre = document.getElementById('c-nombre').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const msg = document.getElementById('c-mensaje').value.trim();
+    if (!nombre || !email || !msg) {
+      mostrarToast('Por favor completá todos los campos.');
+      return;
+    }
+    document.getElementById('c-nombre').value = '';
+    document.getElementById('c-email').value = '';
+    document.getElementById('c-excursion').value = '';
+    document.getElementById('c-mensaje').value = '';
+    mostrarToast('¡Consulta enviada! Te respondemos en menos de 24hs. 🙌');
+  }
+
+  renderResenas();
+</script>
+</body>
+</html>
