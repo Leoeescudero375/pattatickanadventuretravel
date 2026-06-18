@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Excursiones Patta Tickan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero {
+  background: linear-gradient(135deg, var(--noche) 0%, var(--noche2) 50%, rgba(43,191,176,0.3) 100%);
+  padding: 4rem 2.5rem 4.5rem;
+  text-align: center;
+}
+.page-hero .eyebrow { color: var(--turquesa); }
+.page-hero h1 { color: #fff; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
+.page-hero p { color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 560px; margin: 0 auto; line-height: 1.75; }
+
+/* VIAS RAPIDAS */
+.vias-sec { background: var(--crema); }
+
+.vias-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.via-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-lg);
+  padding: 2rem 1.75rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.via-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-hover); }
+
+.via-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.via-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+.via-card p { font-size: 0.84rem; color: var(--text-sec); line-height: 1.6; margin-bottom: 1rem; }
+.via-link { font-size: 0.82rem; font-weight: 600; color: var(--turquesa); }
+
+.via-card.whatsapp:hover { border-color: #25D366; }
+.via-card.email:hover { border-color: var(--cielo); }
+.via-card.instagram:hover { border-color: var(--terracota); }
+
+/* FORM */
+.form-contacto-sec { background: var(--crema2); }
+
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.form-sidebar h2 { font-size: 1.7rem; margin-bottom: 1rem; }
+.form-sidebar p { color: var(--text-sec); font-size: 0.9rem; line-height: 1.78; margin-bottom: 1.5rem; }
+
+.info-items { display: flex; flex-direction: column; gap: 1rem; }
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  border: 1px solid var(--gris-borde);
+}
+
+.info-item-icon { font-size: 1.4rem; flex-shrink: 0; }
+.info-item h4 { font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 600; color: var(--text-sec); margin-bottom: 0.1rem; }
+.info-item p { font-size: 0.875rem; color: var(--text); }
+
+/* Form */
+.form-card {
+  background: var(--blanco);
+  border: 1px solid var(--gris-borde);
+  border-radius: var(--radio-lg);
+  padding: 2.5rem;
+  box-shadow: var(--sombra);
+}
+
+.form-card h3 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+.form-card > p { color: var(--text-sec); font-size: 0.875rem; margin-bottom: 1.75rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--gris-borde);
+  border-radius: var(--radio);
+  color: var(--text);
+  background: var(--blanco);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--turquesa);
+  box-shadow: 0 0 0 3px rgba(43,191,176,0.12);
+}
+
+.form-group textarea { height: 120px; resize: vertical; }
+
+/* MAPA REFERENCIA */
+.mapa-sec { background: var(--noche); padding: 4rem 2.5rem; }
+.mapa-inner { max-width: 1160px; margin: 0 auto; text-align: center; }
+.mapa-inner .eyebrow { color: var(--turquesa); }
+.mapa-inner h2 { color: #fff; font-size: 1.8rem; margin-bottom: 0.75rem; }
+.mapa-inner p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 2rem; }
+
+.mapa-frame {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radio-lg);
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mapa-placeholder {
+  text-align: center;
+  color: rgba(255,255,255,0.4);
+}
+
+.mapa-placeholder .big-pin { font-size: 3rem; margin-bottom: 0.75rem; }
+.mapa-placeholder h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: rgba(255,255,255,0.7); margin-bottom: 0.35rem; }
+.mapa-placeholder p { font-size: 0.85rem; }
+
+.coordenadas {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.coord-item { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+.coord-item strong { color: var(--turquesa); }
+
+@media (max-width: 900px) {
+  .vias-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto 3rem; }
+  .form-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-brand-name">Patta Tickan</span>
+    <span class="nav-brand-sub">Excursiones · Catamarca</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="destinos.html">Destinos</a></li>
+    <li><a href="servicios.html">Servicios</a></li>
+    <li><a href="galeria.html">Galería</a></li>
+    <li><a href="resenas.html">Reseñas</a></li>
+    <li><a href="contacto.html" class="nav-cta active">Contacto</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">🏠 Inicio</a>
+  <a href="destinos.html">🗺️ Destinos</a>
+  <a href="servicios.html">🎒 Servicios</a>
+  <a href="galeria.html">📷 Galería</a>
+  <a href="resenas.html">⭐ Reseñas</a>
+  <a href="contacto.html" class="nav-cta">✉️ Contactar</a>
+</div>
+
+<section class="page-hero">
+  <p class="eyebrow">¿Listo para venir?</p>
+  <h1>Hablemos de tu<br>próxima aventura</h1>
+  <p>Respondemos en menos de 24 horas. Planificamos la excursión ideal para vos: destinos, duración, nivel de dificultad y todo lo que necesitás.</p>
+</section>
+
+<!-- VÍAS RÁPIDAS -->
+<section class="vias-sec section-pad" style="padding-bottom: 0;">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Contacto directo</p>
+      <h2>La forma más rápida de llegar a nosotros</h2>
+    </div>
+    <div class="vias-grid">
+      <a href="https://wa.me/5493833000000" class="via-card whatsapp">
+        <span class="via-icon">💬</span>
+        <h3>WhatsApp</h3>
+        <p>La forma más rápida. Respondemos al instante durante el día.</p>
+        <span class="via-link">Abrir chat →</span>
+      </a>
+      <a href="mailto:info@pattaTickan.com.ar" class="via-card email">
+        <span class="via-icon">✉️</span>
+        <h3>Email</h3>
+        <p>Para consultas detalladas o presupuestos. Respondemos en 24hs.</p>
+        <span class="via-link">Escribir email →</span>
+      </a>
+      <a href="#" class="via-card instagram">
+        <span class="via-icon">📷</span>
+        <h3>Instagram</h3>
+        <p>Seguí nuestras historias y escribinos por DM.</p>
+        <span class="via-link">Ver perfil →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-contacto-sec section-pad">
+  <div class="container">
+    <div class="form-layout">
+      <div class="form-sidebar">
+        <p class="eyebrow">Consulta personalizada</p>
+        <h2>Armamos tu excursión a medida</h2>
+        <p>Contanos qué buscás y te diseñamos la excursión perfecta. Cada viaje es diferente porque cada viajero es diferente.</p>
+        <p>No hay preguntas tontas. Si nunca fuiste a la Puna, mejor todavía: te explicamos todo lo que necesitás saber.</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-item-icon">📍</div>
+            <div>
+              <h4>Ubicación</h4>
+              <p>Antofagasta de la Sierra, Catamarca</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon">🕐</div>
+            <div>
+              <h4>Horario de atención</h4>
+              <p>Lun–Dom · 8:00 a 20:00 hs</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon">⏱️</div>
+            <div>
+              <h4>Tiempo de respuesta</h4>
+              <p>Menos de 24 horas (generalmente mucho menos)</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-item-icon">🌐</div>
+            <div>
+              <h4>Idiomas</h4>
+              <p>Español · Inglés básico</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Envianos tu consulta</h3>
+        <p>Completá el formulario y te contactamos a la brevedad.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre y apellido *</label>
+            <input type="text" id="c-nombre" placeholder="Tu nombre completo">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="c-email" placeholder="tu@email.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="c-tel" placeholder="+54 9 ...">
+          </div>
+          <div class="form-group">
+            <label>Cantidad de personas</label>
+            <select id="c-personas">
+              <option value="">Seleccioná</option>
+              <option>1 persona</option>
+              <option>2 personas</option>
+              <option>3–4 personas</option>
+              <option>5–8 personas</option>
+              <option>Grupo de 9 o más</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Destino de interés</label>
+          <select id="c-destino">
+            <option value="">¿Qué destino te interesa?</option>
+            <option>Laguna Carachi Pampa</option>
+            <option>Volcán Antofagasta</option>
+            <option>Salar de Antofalla</option>
+            <option>Laguna Blanca</option>
+            <option>Los Nacimientos</option>
+            <option>Campo de Piedra Pómez</option>
+            <option>Circuito de varios días</option>
+            <option>No sé, me guía el experto</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Fecha aproximada del viaje</label>
+          <input type="text" id="c-fecha" placeholder="Ej: primera semana de agosto 2025">
+        </div>
+
+        <div class="form-group">
+          <label>Tu consulta *</label>
+          <textarea id="c-mensaje" placeholder="Contanos qué estás buscando, si hay algo especial que quieras ver o hacer, o cualquier duda que tengas…"></textarea>
+        </div>
+
+        <button class="btn btn-turquesa" onclick="enviarConsulta()" style="width:100%; justify-content:center; font-size:1rem; padding:0.9rem;">
+          Enviar consulta
+        </button>
+
+        <p style="font-size:0.75rem; color:var(--text-sec); text-align:center; margin-top:1rem;">
+          Respondemos en menos de 24hs · Sin compromiso
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA -->
+<section class="mapa-sec">
+  <div class="mapa-inner">
+    <p class="eyebrow">Cómo llegar</p>
+    <h2>Antofagasta de la Sierra</h2>
+    <p>A 350 km de San Fernando del Valle de Catamarca por la Ruta Nacional 43. Caminos de ripio en excelentes condiciones.</p>
+    <div class="mapa-frame">
+      <div class="mapa-placeholder">
+        <div class="big-pin">📍</div>
+        <h4>Antofagasta de la Sierra</h4>
+        <p>Provincia de Catamarca · Argentina</p>
+      </div>
+    </div>
+    <div class="coordenadas">
+      <div class="coord-item">Latitud: <strong>-26.0667°</strong></div>
+      <div class="coord-item">Longitud: <strong>-67.4167°</strong></div>
+      <div class="coord-item">Altura: <strong>3.430 msnm</strong></div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Excursiones Patta Tickan</div>
+      <div class="footer-brand-sub">Antofagasta de la Sierra · Catamarca</div>
+      <p class="footer-desc">Excursiones auténticas en la Puna catamarqueña. Guías locales, paisajes únicos, experiencias que duran toda la vida.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Páginas</h4>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="destinos.html">Destinos</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="resenas.html">Reseñas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="https://wa.me/5493833000000">💬 WhatsApp</a></li>
+        <li><a href="mailto:info@pattaTickan.com.ar">✉️ Email</a></li>
+        <li><a href="#">📍 Antofagasta de la Sierra</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Excursiones Patta Tickan · Todos los derechos reservados</div>
+</footer>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const mobile = document.getElementById('nav-mobile');
+toggle.addEventListener('click', () => { toggle.classList.toggle('open'); mobile.classList.toggle('open'); });
+
+function mostrarToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  setTimeout(() => t.classList.remove('visible'), 3500);
+}
+
+function enviarConsulta() {
+  const nombre = document.getElementById('c-nombre').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const msg = document.getElementById('c-mensaje').value.trim();
+  if (!nombre || !email || !msg) {
+    mostrarToast('Por favor completá los campos obligatorios (*).');
+    return;
+  }
+  ['c-nombre','c-email','c-tel','c-personas','c-destino','c-fecha','c-mensaje'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  mostrarToast('¡Consulta enviada con éxito! Te respondemos pronto 🙌');
+}
+</script>
+</body>
+</html>
